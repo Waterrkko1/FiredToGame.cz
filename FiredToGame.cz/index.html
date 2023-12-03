@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FiredToGame.cz</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="particles/particles.min.js"></script>
+  <script src="javascript.js"></script>
+  <style>
+          #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #2222;
+        background-image: url('');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 50px;
+        color: white;
+      }
+        .footer a {
+        color: white;
+      }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+    <div class="header">
+      <ul class="menu">
+        <li><a href="https://FiredToGame.cz" class="active">Domov</a></li>
+        <li><a href="https://FiredToGame.cz/banlist" target="_blank">Banlist</a></li>
+        <li><a href="https://FiredToGame.cz/vip.html">VIP</a></li>
+        <li><a href="https://FiredToGame.cz/ranks" target="_blank">Ranky</a></li>
+        <li><a href="https://dsc.gg/ftg" target="_blank">Discord</a></li>
+        <li><a href="https://steamcommunity.com/groups/FiredToGame" target="_blank">Steam Skupina</a></li>
+      </ul>
+    </div>
+
+    <h1 class="main-header" id="animated-header"></h1>
+  
+  <div id="server-info">
+    <script>
+      const serverInfoContainer = document.getElementById('server-info');
+      fetch('server_info.php')
+        .then(response => response.text())
+        .then(data => {
+          serverInfoContainer.innerHTML = data;
+        })
+        .catch(error => {
+          serverInfoContainer.innerHTML = 'Chyba při načítání informací o serveru.';
+          console.error(error);
+        });
+    </script>
+  </div>
+<style>
+  .footer {
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1; /* Pridaná vlastnosť */
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer a {
+  color: white;
+  text-decoration: underline;
+}
+</style>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; FiredToGame.cz <span id="current-year"></span>. Made by <a href="https://pillar.io/waterrkko1" target="_blank">Water</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const currentYear = new Date().getFullYear();
+    document.getElementById("current-year").textContent = currentYear;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'particles/particles.json', true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var config = JSON.parse(xhr.responseText);
+          particlesJS('particles-js', config, function() {
+            console.log('Particles.js loaded');
+          });
+        }
+      };
+      xhr.send();
+  </script> 
+</body>
+</html>

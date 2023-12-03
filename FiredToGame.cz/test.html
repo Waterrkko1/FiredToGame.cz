@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Moja stránka s Particles.js</title>
+    <style>
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            background-image: url('');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <script src="particles/particles.min.js"></script>
+    <script>
+        particlesJS.load('particles-js', 'particles/particles.json', function() {
+            console.log('Particles.js loaded');
+        });
+    </script>
+</body>
+</html>
